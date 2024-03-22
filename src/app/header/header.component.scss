@@ -1,10 +1,19 @@
 header {
     padding: 10px;
-    background: #262495;
+    background: #77a8e1;
+}
+
+.col-md-9 {
+    background: #77a8e1;
+}
+
+.col-md-3 {
+    background: #77a8e1;
 }
 
 .logo {
     width: 90px;
+    background: #77a8e1;
 }
 
 .logo:hover {
@@ -22,7 +31,7 @@ header {
 
 .desktop_menu ul li {
     list-style-type: none;
-    color: rgb(51, 53, 176);
+    color: rgb(64, 66, 173);
     display: inline-block;
     font-size: 18px;
     margin-left: 26px;

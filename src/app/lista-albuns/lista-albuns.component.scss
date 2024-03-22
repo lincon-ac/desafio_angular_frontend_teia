@@ -10,6 +10,12 @@
         width: 0px;
     }
 
+    h1 {
+        color: #ffffff;
+        background: #2e6fb8;
+        text-align: center;
+    }
+
     .container {
         border-radius: 20px;
         border-radius: 34px;
@@ -21,11 +27,11 @@
 
         form {
             display: flex;
-            justify-content: space-between;
+            // justify-content: space-between;
 
             div {
                 display: flex;
-                flex-direction: column;
+                // flex-direction: column;
                 // margin-bottom: 10px;
                 // margin-right: 5px;
 

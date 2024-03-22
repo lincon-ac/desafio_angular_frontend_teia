@@ -1,5 +1,69 @@
 <div class="container">
-    <form>
+    <h1>Lista de Albuns</h1>
+    
+
+  <div>
+    <form>  
+        <div>
+            <label>Título</label>
+            <input type="text" [(ngModel)]="title" name="title">
+        </div>
+
+        <div>
+            <label>Foto</label>
+            <input type="text" [(ngModel)]="photo" name="foto">
+        </div>  
+  <button  class="btn btn-success" (click)="buttonClick()"> 
+      {{ id ? 'Salvar' : 'Criar' }}  
+    </button>  
+    </form>
+</div>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th> Id </th>
+            <th> Title </th>
+            <th> Foto </th>
+            <th> Ação </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let foto of fotos$ | async">
+                <td> {{ foto.id }} </td>
+                <td> {{ foto.title }} </td>
+                <td> {{ foto.url }} </td>
+                <td>
+                    <button (click)="preencherCampos(foto)" class="btn btn-primary"> <i class="bi bi-pencil"></i> Editar </button>
+                    <button (click)="remover(foto.id!)" class="btn btn-danger bi bi-trash"> Excluir </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<nav aria-label="Navegação de Páginas">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="paginaAtual === 1">
+            <a class="page-link" href="#" aria-label="Página Anterior" (click)="paginaAtual > 1 ? paginaAtual : null">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let pagina of paginas" [class.active]="pagina === paginaAtual">
+            <a class="page-link" href="#" (click)="paginaAtual = pagina">{{ pagina }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="paginaAtual === totalPaginas">
+            <a class="page-link" href="#" aria-label="Próxima Página"
+                (click)="paginaAtual < totalPaginas ? paginaAtual : null">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</div>
+
+<!-- <div class="container">
+    <form> -->
         <!-- <div>
       <label>Album Id</label>
       <input type="text" disabled [(ngModel)]="albumId" name="albumId">
@@ -9,7 +73,7 @@
       <label>Id</label>
       <input type="text" disabled [(ngModel)]="id" name="id">
     </div> -->
-
+<!-- 
         <div>
             <label>Título</label>
             <input type="text" [(ngModel)]="title" name="title">
@@ -18,13 +82,13 @@
         <div>
             <label>Foto</label>
             <input type="text" [(ngModel)]="photo" name="foto">
-        </div>
+        </div> -->
 
         <!-- <button (click)="buttonClick()"> 
       {{ id ? 'Salvar' : 'Criar' }}  
     </button> -->
 
-        <button class="btn btn-success">
+        <!-- <button class="btn btn-success">
             {{ id ? 'Salvar' : 'Criar' }}
         </button>
     </form>
@@ -50,4 +114,4 @@
 
         </tbody>
     </table>
-</div>
+</div> -->

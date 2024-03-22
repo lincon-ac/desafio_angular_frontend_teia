@@ -9,6 +9,21 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['./lista-albuns.component.scss']
 })
 export class ListaAlbunsComponent {
+  registros: Photo[] = [
+    
+  ];
+
+  registrosPorPagina: number = 10;
+  paginaAtual: number = 1;
+
+  get totalPaginas(): number {
+    return Math.ceil(this.registros.length / this.registrosPorPagina);
+  }
+
+  get paginas(): number[] {
+    return Array.from({ length: this.totalPaginas }, (_, index) => index + 1);
+  }
+
   title = '';
 
   // fotos: Photo[] = []
@@ -48,7 +63,7 @@ export class ListaAlbunsComponent {
 
   preencherCampos(photo: Photo) {
     this.id = photo.id!.toString();
-    //this.url = photo.url;
+    // this.url = photo.url;
     this.title = photo.title;
   }
 
