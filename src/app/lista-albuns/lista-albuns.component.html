@@ -1,5 +1,63 @@
 <div class="container">
     <h1>Lista de Albuns</h1>
+
+<form class="container-form">
+    <div class="flex-item">
+        <label>Título</label>
+        <input type="text" [(ngModel)]="title" name="title">
+    </div>
+
+    <div class="flex-item">
+        <label>Foto</label>
+        <input type="text" [(ngModel)]="photo" name="foto">
+    </div>
+
+    <button class="btn btn-success button-item" (click)="buttonClick()">
+        {{ id ? 'Salvar' : 'Criar' }}
+    </button>
+</form>
+
+    <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef> Título </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="url">
+                <mat-header-cell *matHeaderCellDef> Foto </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <img [src]="element.url" alt="Weight Image" class="imagem"> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="thumbnailUrl">
+                <mat-header-cell *matHeaderCellDef> Thumbnail </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.thumbnailUrl}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let foto"> <div>
+                    <button (click)="preencherCampos(foto)" class="btn btn-primary"> <i class="bi bi-pencil"></i> Editar </button>
+                    <button (click)="remover(foto.id!)" class="btn btn-danger bi bi-trash"> Excluir </button>
+                </div> </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+        </mat-paginator>
+    </div>
+
+    <!-- <div class="container">
+    <h1>Lista de Albuns</h1>
     
 
   <div>
@@ -60,20 +118,22 @@
         </li>
     </ul>
 </nav>
-</div>
+</div> -->
 
-<!-- <div class="container">
+    <!-- comentado ate aqui -->
+
+    <!-- <div class="container">
     <form> -->
-        <!-- <div>
+    <!-- <div>
       <label>Album Id</label>
       <input type="text" disabled [(ngModel)]="albumId" name="albumId">
     </div> -->
 
-        <!-- <div>
+    <!-- <div>
       <label>Id</label>
       <input type="text" disabled [(ngModel)]="id" name="id">
     </div> -->
-<!-- 
+    <!-- 
         <div>
             <label>Título</label>
             <input type="text" [(ngModel)]="title" name="title">
@@ -84,11 +144,11 @@
             <input type="text" [(ngModel)]="photo" name="foto">
         </div> -->
 
-        <!-- <button (click)="buttonClick()"> 
+    <!-- <button (click)="buttonClick()"> 
       {{ id ? 'Salvar' : 'Criar' }}  
     </button> -->
 
-        <!-- <button class="btn btn-success">
+    <!-- <button class="btn btn-success">
             {{ id ? 'Salvar' : 'Criar' }}
         </button>
     </form>

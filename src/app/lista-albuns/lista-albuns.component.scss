@@ -20,54 +20,19 @@
         border-radius: 20px;
         border-radius: 34px;
         background: linear-gradient(145deg, #2e6fb8, #18559e);
-        // box-shadow: 29px 29px 43px #3535bf,
-        //     -29px -29px 43px #2e3ca6;
         padding: 20px;
-        width: 500px;
+
 
         form {
             display: flex;
-            // justify-content: space-between;
-
-            div {
-                display: flex;
-                // flex-direction: column;
-                // margin-bottom: 10px;
-                // margin-right: 5px;
-
-                label {
-                    color: #ffffff;
-                    font-size: .9rem;
-                    font-weight: 500;
-                    // margin-bottom: 5px;
-                    background: #2e6fb8;
-                }
-
-                input {
-                    border: 1px solid #000000bd;
-                    border-radius: 3px;
-                    outline: none;
-                    padding: 3px;
-                    font-size: .7rem;
-                }
-
-            }
-        }
-
-
-        button {
-            border: 0;
-            border-radius: 5px;
-            cursor: pointer;
-            // background-color: #d0a634;
-            padding: 2px 2px;
-            font-weight: 500;
             width: 100%;
-            color: #ffffff;
 
-            // &:hover {
-            //     background-color: #fffff9;
-            // }
+            label {
+                color: #ffffff;
+                font-size: .9rem;
+                font-weight: 500;
+                background: #2e6fb8;
+            }
         }
     }
 
@@ -92,4 +57,39 @@
             cursor: pointer;
         }
     }
+}
+
+.mat-column-id {
+    max-width: 40px;
+    padding-right: 4px;
+
+}
+
+.mat-column-url {
+    max-width: 90px;
+
+}
+
+.container-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-item {
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.button-item {
+    flex-shrink: 0;
+}
+
+.flex-item input {
+    width: 80%;
+    margin-left: 8px;
+}
+
+.imagem {
+    max-width: 75px;
+    height: auto;
 }

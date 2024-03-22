@@ -1,16 +1,29 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Photo } from '../models/photo.model';
 import { Observable } from 'rxjs';
 import { PhotoService } from '../services/photo.service';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-lista-albuns',
   templateUrl: './lista-albuns.component.html',
   styleUrls: ['./lista-albuns.component.scss']
 })
-export class ListaAlbunsComponent {
+export class ListaAlbunsComponent 
+  implements AfterViewInit {
+  displayedColumns: string[] = ['id', 'title', 'url', 'thumbnailUrl', 'acoes'];
+  dataSource = new MatTableDataSource<Photo>();
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
   registros: Photo[] = [
-    
+
   ];
 
   registrosPorPagina: number = 10;
@@ -40,6 +53,13 @@ export class ListaAlbunsComponent {
 
   obterFotosCadastradas() {
     this.fotos$ = this.photoService.obterFotos();
+    this.fotos$.subscribe((resposta) => {
+      if (!resposta) {
+        alert('Ocorreu um erro ao buscar as fotos');
+        return;
+      }
+      this.dataSource.data = resposta;
+    })
   }
 
   buttonClick() {
@@ -57,7 +77,8 @@ export class ListaAlbunsComponent {
 
   atualizar() {
     this.photoService.editarFoto({
-      id: parseInt(this.id), title: this.title  })
+      id: parseInt(this.id), title: this.title
+    })
       .subscribe(_ => this.obterFotosCadastradas());
   }
 
@@ -71,4 +92,5 @@ export class ListaAlbunsComponent {
     this.photoService.remover(id)
       .subscribe(_ => this.obterFotosCadastradas());
   }
-}
+
+} 
