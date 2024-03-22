@@ -1,0 +1,53 @@
+<div class="container">
+    <form>
+        <!-- <div>
+      <label>Album Id</label>
+      <input type="text" disabled [(ngModel)]="albumId" name="albumId">
+    </div> -->
+
+        <!-- <div>
+      <label>Id</label>
+      <input type="text" disabled [(ngModel)]="id" name="id">
+    </div> -->
+
+        <div>
+            <label>Título</label>
+            <input type="text" [(ngModel)]="title" name="title">
+        </div>
+
+        <div>
+            <label>Foto</label>
+            <input type="text" [(ngModel)]="photo" name="foto">
+        </div>
+
+        <!-- <button (click)="buttonClick()"> 
+      {{ id ? 'Salvar' : 'Criar' }}  
+    </button> -->
+
+        <button class="btn btn-success">
+            {{ id ? 'Salvar' : 'Criar' }}
+        </button>
+    </form>
+
+    <table>
+        <thead>
+            <th> Id </th>
+            <th> Title </th>
+            <th> Foto </th>
+            <th> Ação </th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let foto of fotos$ | async">
+                <td> {{ foto.id }} </td>
+                <td> {{ foto.title }} </td>
+                <td> {{ foto.url }} </td>
+                <td>
+                    <button (click)="preencherCampos(foto)" class="btn btn-primary"> alterar </button>
+                    <button (click)="remover(foto.id!)" class="btn btn-danger"> remover </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
