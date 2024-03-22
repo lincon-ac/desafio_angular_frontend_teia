@@ -27,29 +27,28 @@ export class ListaAlbunsComponent {
     this.fotos$ = this.photoService.obterFotos();
   }
 
-  // buttonClick() {
-  //   if (!this.photo || !this.title)
-  //     return;
+  buttonClick() {
+    if (!this.photo || !this.title)
+      return;
 
-  //   if (this.id) {
-  //     this.atualizar();
-  //     return;
-  //   }
+    if (this.id) {
+      this.atualizar();
+      return;
+    }
 
-  //   this.photoService.cadastrarFoto({ title: this.title, text: this.photo })
-  //     .subscribe(_ => this.obterFotosCadastradas())
-  // }
+    this.photoService.cadastrarFoto({ title: this.title })
+      .subscribe(_ => this.obterFotosCadastradas())
+  }
 
-  // atualizar() {
-  //   this.photoService.editarFoto({
-  //     id: parseInt(this.id), title: this.title, text: this.photo
-  //   })
-  //     .subscribe(_ => this.obterFotosCadastradas());
-  // }
+  atualizar() {
+    this.photoService.editarFoto({
+      id: parseInt(this.id), title: this.title  })
+      .subscribe(_ => this.obterFotosCadastradas());
+  }
 
   preencherCampos(photo: Photo) {
     this.id = photo.id!.toString();
-    this.photo = photo.url;
+    //this.url = photo.url;
     this.title = photo.title;
   }
 
