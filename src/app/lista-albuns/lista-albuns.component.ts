@@ -91,6 +91,7 @@ export class ListaAlbunsComponent
   remover(id: number) {
     this.photoService.remover(id)
       .subscribe(_ => this.obterFotosCadastradas());
+      // .subscribe(_ => this.obterFotosCadastradas());
   }
 
 } 
